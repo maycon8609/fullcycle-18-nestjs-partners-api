@@ -1,0 +1,38 @@
+@hostname = localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+
+### Create a new event
+# @name createEvent
+POST http://{{host}}/events
+Content-Type: application/json
+
+{
+  "name": "New Event test to delete",
+  "description": "Description to new event",
+  "date": "2024-06-19T00:00:00",
+  "price": 100
+}
+
+###
+@eventId = {{ createEvent.response.body.id }}
+
+### Get all events
+GET http://{{host}}/events
+
+### Get one events
+GET http://{{host}}/events/{{ eventId }}
+
+### Update a event
+PATCH http://{{host}}/events/{{ eventId }}
+Content-Type: application/json
+
+{
+  "name": "New Event name",
+  "description": "New description",
+  "date": "2024-06-19T00:00:00",
+  "price": 200
+}
+
+### Delete a event
+DELETE http://{{host}}/events/{{ eventId }}
