@@ -1,7 +1,7 @@
 @hostname = localhost
 @port = 3000
 @host = {{hostname}}:{{port}}
-@eventId = 5318137e-232b-4980-bb5b-cc5aa36e5090
+@eventId = 2f867caa-1e0e-40e2-b6cf-501556d9c278
 
 ### Create a new spot
 # @name createSpot
@@ -9,7 +9,7 @@ POST http://{{host}}/events/{{eventId}}/spots
 Content-Type: application/json
 
 {
-  "name": "New Spot"
+  "name": "A1"
 }
 
 ###

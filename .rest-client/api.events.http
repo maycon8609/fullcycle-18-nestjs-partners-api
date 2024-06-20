@@ -8,7 +8,7 @@ POST http://{{host}}/events
 Content-Type: application/json
 
 {
-  "name": "New Event name",
+  "name": "New Event",
   "description": "Description to new event",
   "date": "2024-06-19T00:00:00",
   "price": 100
@@ -36,3 +36,13 @@ Content-Type: application/json
 
 ### Delete a event
 DELETE http://{{host}}/events/{{ eventId }}
+
+### Reserve a spot to event
+POST http://{{host}}/events/{{ eventId }}/reserve
+Content-Type: application/json
+
+{
+  "spots": ["A1", "A2", "B3", "B4"],
+  "ticket_kind": "full",
+  "email": "test@test.com"
+}
