@@ -11,6 +11,7 @@ import {
 import { EventsService } from './events.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
+import { ReserveSpotDto } from './dto/reserve-spot.dto';
 
 @Controller('events')
 export class EventsController {
@@ -26,19 +27,27 @@ export class EventsController {
     return this.eventsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.eventsService.findOne(id);
+  @Get(':eventId')
+  findOne(@Param('eventId') eventId: string) {
+    return this.eventsService.findOne(eventId);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateEventDto: UpdateEventDto) {
-    return this.eventsService.update(id, updateEventDto);
+  @Patch(':eventId')
+  update(
+    @Param('eventId') eventId: string,
+    @Body() updateEventDto: UpdateEventDto,
+  ) {
+    return this.eventsService.update(eventId, updateEventDto);
   }
 
   @HttpCode(204)
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.eventsService.remove(id);
+  @Delete(':eventId')
+  remove(@Param('eventId') eventId: string) {
+    return this.eventsService.remove(eventId);
+  }
+
+  @Post(':eventId/reserve')
+  reserveSpots(@Body() dto: ReserveSpotDto, @Param('eventId') eventId: string) {
+    return this.eventsService.reserveSpot(dto, eventId);
   }
 }
