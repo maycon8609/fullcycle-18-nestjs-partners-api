@@ -1,0 +1,33 @@
+@hostname = localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+@eventId = 5318137e-232b-4980-bb5b-cc5aa36e5090
+
+### Create a new spot
+# @name createSpot
+POST http://{{host}}/events/{{eventId}}/spots
+Content-Type: application/json
+
+{
+  "name": "New Spot"
+}
+
+###
+@spotId = {{ createSpot.response.body.id }}
+
+### Get all spots
+GET http://{{host}}/events/{{eventId}}/spots
+
+### Get one spot
+GET http://{{host}}/events/{{eventId}}/spots/{{ spotId }}
+
+### Update a spot
+PATCH http://{{host}}/events/{{eventId}}/spots/{{ spotId }}
+Content-Type: application/json
+
+{
+  "status": "reserved"
+}
+
+### Delete a spot
+DELETE http://{{host}}/events/{{eventId}}/spots/{{ spotId }}

@@ -8,7 +8,7 @@ POST http://{{host}}/events
 Content-Type: application/json
 
 {
-  "name": "New Event test to delete",
+  "name": "New Event name",
   "description": "Description to new event",
   "date": "2024-06-19T00:00:00",
   "price": 100
@@ -28,7 +28,7 @@ PATCH http://{{host}}/events/{{ eventId }}
 Content-Type: application/json
 
 {
-  "name": "New Event name",
+  "name": "Updated event name",
   "description": "New description",
   "date": "2024-06-19T00:00:00",
   "price": 200
