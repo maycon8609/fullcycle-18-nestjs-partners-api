@@ -40,6 +40,7 @@ DELETE http://{{host}}/events/{{ eventId }}
 ### Reserve a spot to event
 POST http://{{host}}/events/{{ eventId }}/reserve
 Content-Type: application/json
+X-Api-Token: 123
 
 {
   "spots": ["A1", "A2", "B3", "B4"],
